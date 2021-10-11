@@ -1,0 +1,16 @@
+{
+  "name": "agora-token-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": "https://github.com/coffeeDev98/agora-token-server.git",
+  "author": "coffeeDev <coffee.dev98@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "agora-access-token": "^2.0.4",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  }
+}
