@@ -1,5 +1,5 @@
 const express = require("express");
-const { RtcTokenBuilder, RtcRole } = require("agora-access-token");
+const { RtmTokenBuilder, RtmRole } = require("agora-access-token");
 require("dotenv").config();
 const PORT = 8080;
 
@@ -29,10 +29,10 @@ const generateAccessToken = (req, res) => {
     uid = 0;
   }
   // get role
-  let role = RtcRole.SUBSCRIBER;
-  if (req.query.role === "publisher") {
-    role = RtcRole.PUBLISHER;
-  }
+  let role = RtmRole.Rtm_User;
+
+  console.log({ channel, uid });
+
   // get the expiration time
   let expireTime = req.query.expireTime;
   if (!expireTime || expireTime === "") {
@@ -44,10 +44,10 @@ const generateAccessToken = (req, res) => {
   const currentTime = Math.floor(Date.now() / 1000);
   const priviledgeExpireTime = currentTime + expireTime;
   // build the token
-  const token = RtcTokenBuilder.buildTokenWithUid(
+  console.log({ uid });
+  const token = RtmTokenBuilder.buildToken(
     APP_ID,
     APP_CERTIFICATE,
-    channel,
     uid,
     role,
     priviledgeExpireTime
